@@ -25,7 +25,5 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
       run: dotnet build Tzy.MAUI.AppCenter/Tzy.MAUI.AppCenter.csproj -c Release -f net7.0-android --no-restore
 
