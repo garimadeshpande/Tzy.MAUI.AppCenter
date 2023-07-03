@@ -15,10 +15,15 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
     - name: Install .NET MAUI
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build garimadeshpande/Tzy.MAUI.AppCenter/Tzy.MAUI.AppCenter.csproj -c Release -f net7.0-android --no-restore
-
+      run: dotnet build Tzy.MAUI.AppCenter/Tzy.MAUI.AppCenter.csproj -c Release -f net7.0-android /p:AndroidSigningKeyStore=myapp.keystore /p:AndroidSigningKeyAlias=ghactionskey /p:AndroidSigningKeyPass="${{ secrets.KEYSTORE_PASSWORD }}" /p:AndroidSigningStorePass="${{ secrets.KEYSTORE_PASSWORD_ALIAS }}" --no-restore
+    
