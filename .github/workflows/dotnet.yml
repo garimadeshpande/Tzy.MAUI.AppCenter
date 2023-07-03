@@ -15,9 +15,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: checkout@v3
+    - uses: garimadeshpande/Tzy.MAUI.AppCenter/actions/checkout@v3
     - name: Setup .NET
-      uses: setup-dotnet@v2
+      uses: garimadeshpande/Tzy.MAUI.AppCenter/actions/setup-dotnet@v2
       with:
         dotnet-version: 7.0.x
     - name: Install .NET MAUI
